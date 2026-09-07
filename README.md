@@ -1,4 +1,4 @@
-# BA2105 — Agentic AI Workflows Lab
+# Agentsway — Agentic AI Workflows Lab
 
 A small learning repository for exploring **agentic AI workflows** using the
 [OpenAI Agents SDK](https://github.com/openai/openai-agents-python). It shows how to define an
