@@ -11,8 +11,36 @@ and AI agents.
 - An [OpenAI API key](https://platform.openai.com/api-keys)
 - (Optional) A [Gemini API key](https://aistudio.google.com/api-keys), if you want to experiment
   with `google-genai` instead of / alongside OpenAI
+- A [Google account](https://accounts.google.com/signup) with access to
+  [Google Colab](https://colab.research.google.com/), since this lab is designed to be run in a
+  Colab notebook
 
-## Setup
+## Running on Google Colab
+
+This lab is meant to be run on [Google Colab](https://colab.research.google.com/) so you don't
+need to set up Python locally.
+
+1. Sign in with a Google account and open [colab.research.google.com](https://colab.research.google.com/).
+2. Create a new notebook (**File → New notebook**).
+3. Install dependencies in the first cell:
+
+   ```
+   !pip install openai-agents requests google-genai
+   ```
+
+4. Set your API key as an environment variable, or use Colab's **Secrets** panel (the key icon in
+   the left sidebar) to store `OPENAI_API_KEY` securely and load it with `userdata.get`:
+
+   ```python
+   import os
+   from google.colab import userdata
+
+   os.environ["OPENAI_API_KEY"] = userdata.get("OPENAI_API_KEY")
+   ```
+
+5. Copy the contents of [workflow.py](workflow.py) into a new cell and run it.
+
+## Setup (local)
 
 1. **Create and activate a virtual environment**
 
