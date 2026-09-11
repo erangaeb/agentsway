@@ -68,6 +68,7 @@ need to set up Python locally.
 |---|---|
 | [notebooks/01_openai_basic_agent.ipynb](notebooks/01_openai_basic_agent.ipynb) | Ready-to-run OpenAI agent notebook |
 | [notebooks/02_gemini_basic_agent.ipynb](notebooks/02_gemini_basic_agent.ipynb) | Gemini agent via OpenAI-compatible API |
+| [notebooks/03_web_research_agent.ipynb](notebooks/03_web_research_agent.ipynb) | Provider-selectable agent with an internet-search tool |
 | [src/workflow.py](src/workflow.py) | Defines and runs the `Learning Assistant` |
 | [requirements.txt](requirements.txt) | Python dependencies (`openai-agents`, `requests`, `google-genai`) |
 
