@@ -18,7 +18,10 @@ You are a helpful, accurate, and beginner-friendly AI assistant.
 
 result = Runner.run_sync(
     starting_agent=ba2105_agent,
-    input="Explain Univesity of Colombo School of Computing Master of Business Analytics Program."
+    input=(
+        "Explain the University of Colombo School of Computing "
+        "Master of Business Analytics program."
+    ),
 )
 
 print(result.final_output)
