@@ -1,136 +1,105 @@
 # Agentsway — Agentic AI Workflows Lab
 
-A small learning repository for exploring **agentic AI workflows** using the
-[OpenAI Agents SDK](https://github.com/openai/openai-agents-python). It shows how to define an
-AI agent, give it instructions, and run it — a starting point for experimenting with agentic AI
-and AI agents.
+A small, notebook-first learning lab for building agentic AI workflows with the
+[OpenAI Agents SDK](https://github.com/openai/openai-agents-python). Work through the notebooks
+in order to learn basic agents, web-search tools, agent tool calls, multi-agent workflows, and
+audio generation with either OpenAI or Gemini.
+
+## What you will build
+
+| Notebook | Concept | What it does |
+|---|---|---|
+| [01_openai_basic_agent.ipynb](notebooks/01_openai_basic_agent.ipynb) | Basic OpenAI agent | Defines a beginner-friendly assistant with an explicit `gpt-5-mini` model setting. |
+| [02_gemini_basic_agent.ipynb](notebooks/02_gemini_basic_agent.ipynb) | Basic Gemini agent | Runs the same assistant pattern with Gemini through its OpenAI-compatible API. |
+| [03_direct_web_research.ipynb](notebooks/03_direct_web_research.ipynb) | Direct function call | Calls DuckDuckGo search directly, shows the results, then asks an agent to summarize them. |
+| [04_agent_tool_call_web_research.ipynb](notebooks/04_agent_tool_call_web_research.ipynb) | Agent tool call | Gives the agent an annotated `search_web` tool and lets it decide when to call it. |
+| [05_news_brief_workflow.ipynb](notebooks/05_news_brief_workflow.ipynb) | Multi-agent workflow | Searches news, filters it with an editor agent, writes a news script, creates audio, and downloads it. |
 
 ## Prerequisites
 
-- Python 3.9+
-- An [OpenAI API key](https://platform.openai.com/api-keys)
-- (Optional) A [Gemini API key](https://aistudio.google.com/api-keys), if you want to experiment
-  with `google-genai` instead of / alongside OpenAI
-- A [Google account](https://accounts.google.com/signup) with access to
-  [Google Colab](https://colab.research.google.com/), since this lab is designed to be run in a
-  Colab notebook
+- Python 3.9+ for local execution, or a Google account for
+  [Google Colab](https://colab.research.google.com/)
+- An [OpenAI API key](https://platform.openai.com/api-keys) for OpenAI notebooks
+- A [Gemini API key](https://aistudio.google.com/api-keys) for Gemini notebooks
 
-## Running on Google Colab
+You need only the key for the provider you select. Never add API keys directly to a notebook or
+commit them to the repository.
 
-This lab is meant to be run on [Google Colab](https://colab.research.google.com/) so you don't
-need to set up Python locally.
+## Run the notebooks in Google Colab
 
-1. Sign in with a Google account and open [colab.research.google.com](https://colab.research.google.com/).
-2. Upload and open a notebook:
+1. Open the desired notebook from the `notebooks/` folder in Google Colab.
+2. Run its dependency-install cell.
+3. In Colab's **Secrets** panel (key icon in the left sidebar), add the required key:
 
-   - [01_openai_basic_agent.ipynb](notebooks/01_openai_basic_agent.ipynb) for OpenAI
-   - [02_gemini_basic_agent.ipynb](notebooks/02_gemini_basic_agent.ipynb) for Gemini
-3. Install dependencies by running the first code cell:
+   - `OPENAI_API_KEY` for notebook 01, or when `PROVIDER = "openai"`
+   - `GEMINI_API_KEY` for notebook 02, or when `PROVIDER = "gemini"`
 
-   ```python
-   %pip install -q openai-agents requests google-genai
-   ```
+4. In notebooks 03–05, select the provider in the configuration cell. The model names are shown
+   there: `gpt-5-mini` for OpenAI agents and `gemini-2.5-flash` for Gemini agents.
+5. Run the remaining cells from top to bottom.
 
-4. Add the required API key to Colab's **Secrets** panel (the key icon in the left sidebar):
-   `OPENAI_API_KEY` for the OpenAI notebook or `GEMINI_API_KEY` for the Gemini notebook.
-5. Run the remaining cells in order.
+### News workflow output
 
-## Setup (local)
+Notebook 05 starts with a runnable Mermaid diagram explaining the flow:
 
-1. **Create and activate a virtual environment**
+`topic → DuckDuckGo news search → editor agent → script writer agent → TTS → audio download`
 
-   ```
+Its selected provider is used for both the agents and speech:
+
+- OpenAI creates `news_brief.mp3` with `gpt-4o-mini-tts`.
+- Gemini creates `news_brief.wav` with native Gemini TTS.
+
+Run the final download cell to save the generated audio file. When sharing the briefing, disclose
+that the voice is AI-generated.
+
+## Run the basic example locally
+
+The local script is the simplest OpenAI example.
+
+1. Create and activate a virtual environment:
+
+   ```bash
    python -m venv .venv
    source .venv/bin/activate
    ```
 
-2. **Install dependencies**
+2. Install dependencies:
 
-   ```
+   ```bash
    pip install -r requirements.txt
    ```
 
-3. **Set your API key**
+3. Set your OpenAI API key:
 
-   ```
-   export OPENAI_API_KEY=<your api key>
+   ```bash
+   export OPENAI_API_KEY="your-api-key"
    ```
 
-4. **Run the agent**
+4. Run the workflow:
 
-   ```
+   ```bash
    python src/workflow.py
    ```
 
 ## Project structure
 
-| File | Purpose |
+| Path | Purpose |
 |---|---|
-| [notebooks/01_openai_basic_agent.ipynb](notebooks/01_openai_basic_agent.ipynb) | Ready-to-run OpenAI agent notebook |
-| [notebooks/02_gemini_basic_agent.ipynb](notebooks/02_gemini_basic_agent.ipynb) | Gemini agent via OpenAI-compatible API |
-| [notebooks/03_direct_web_research.ipynb](notebooks/03_direct_web_research.ipynb) | Direct search followed by an agent summary |
-| [notebooks/04_agent_tool_call_web_research.ipynb](notebooks/04_agent_tool_call_web_research.ipynb) | Agent-driven search with an annotated tool |
-| [notebooks/05_news_brief_workflow.ipynb](notebooks/05_news_brief_workflow.ipynb) | Multi-agent news research, scripting, and text-to-speech |
-| [src/workflow.py](src/workflow.py) | Defines and runs the `Learning Assistant` |
-| [requirements.txt](requirements.txt) | Python dependencies (`openai-agents`, `requests`, `google-genai`) |
+| `notebooks/` | Colab-ready learning workflows, ordered from basic to advanced. |
+| `src/workflow.py` | A minimal local Learning Assistant example. |
+| `requirements.txt` | Dependencies: `openai-agents`, `requests`, `google-genai`, and `ddgs`. |
 
-## How it works
+## Key ideas
 
-[src/workflow.py](src/workflow.py) defines a single agent and runs it synchronously with a sample prompt:
-
-```python
-from agents import Agent, Runner
-
-agent = Agent(
-    name="Learning Assistant",
-    instructions="You are a helpful AI assistant. Explain things about given topic clearly to a beginner."
-)
-
-result = Runner.run_sync(
-    starting_agent=agent,
-    input="Explain University of Colombo School of Computing Master of Business Analytics Program."
-)
-
-print(result.final_output)
-```
-
-## Refining agent instructions
-
-The `instructions` field is the agent's system prompt — it shapes tone, scope, and behavior.
-Start simple, then add guardrails as needed. For example:
-
-**Minimal:**
-
-```python
-instructions="You are a helpful AI assistant. Explain things about given topic clearly to a beginner."
-```
-
-**With guardrails:**
-
-```python
-instructions="""
-You are a helpful, accurate, and beginner-friendly AI assistant.
-
-- Explain things clearly and simply.
-- Assume the user may be a beginner.
-- Use examples when useful.
-- Break complex topics into smaller parts.
-- Be concise for simple questions.
-- Be detailed when needed.
-- Never invent facts.
-- If unsure, say so clearly.
-"""
-```
-
-Try editing the `instructions` in [src/workflow.py](src/workflow.py) and re-running to see how the
-agent's responses change.
+- **Instructions:** define the agent's role, constraints, and response style.
+- **Direct function calls:** your Python code calls a tool, inspects the result, then passes it to an agent.
+- **Agent tool calls:** the agent invokes an annotated function itself during a run.
+- **Multi-agent workflows:** focused agents pass work from one stage to the next.
+- **Provider selection:** the same workflow can use OpenAI or Gemini models through one configuration setting.
 
 ## Next steps
 
-Ideas for extending this lab:
-
-- Swap the `input` prompt to test different topics.
-- Add tools/function calls to the agent (see the
-  [Agents SDK docs](https://github.com/openai/openai-agents-python)).
-- Chain multiple agents together to build a multi-agent workflow.
-- Try `google-genai` as an alternative model provider.
+- Change the questions and news topic to explore different use cases.
+- Compare direct tool calls with agent-selected tool calls in notebooks 03 and 04.
+- Adjust the editor and writer instructions in notebook 05 and observe how the final briefing changes.
+- Add another specialized agent, such as a fact checker or headline writer, to the news workflow.
