@@ -21,14 +21,18 @@ This lab is meant to be run on [Google Colab](https://colab.research.google.com/
 need to set up Python locally.
 
 1. Sign in with a Google account and open [colab.research.google.com](https://colab.research.google.com/).
-2. Upload and open [notebooks/01_openai_basic_agent.ipynb](notebooks/01_openai_basic_agent.ipynb).
+2. Upload and open a notebook:
+
+   - [01_openai_basic_agent.ipynb](notebooks/01_openai_basic_agent.ipynb) for OpenAI
+   - [02_gemini_basic_agent.ipynb](notebooks/02_gemini_basic_agent.ipynb) for Gemini
 3. Install dependencies by running the first code cell:
 
    ```python
    %pip install -q openai-agents requests google-genai
    ```
 
-4. Add `OPENAI_API_KEY` to Colab's **Secrets** panel (the key icon in the left sidebar).
+4. Add the required API key to Colab's **Secrets** panel (the key icon in the left sidebar):
+   `OPENAI_API_KEY` for the OpenAI notebook or `GEMINI_API_KEY` for the Gemini notebook.
 5. Run the remaining cells in order.
 
 ## Setup (local)
@@ -63,6 +67,7 @@ need to set up Python locally.
 | File | Purpose |
 |---|---|
 | [notebooks/01_openai_basic_agent.ipynb](notebooks/01_openai_basic_agent.ipynb) | Ready-to-run OpenAI agent notebook |
+| [notebooks/02_gemini_basic_agent.ipynb](notebooks/02_gemini_basic_agent.ipynb) | Gemini agent via OpenAI-compatible API |
 | [src/workflow.py](src/workflow.py) | Defines and runs the `Learning Assistant` |
 | [requirements.txt](requirements.txt) | Python dependencies (`openai-agents`, `requests`, `google-genai`) |
 
