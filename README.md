@@ -27,16 +27,39 @@ commit them to the repository.
 
 ## Run the notebooks in Google Colab
 
-1. Open the desired notebook from the `notebooks/` folder in Google Colab.
-2. Run its dependency-install cell.
-3. In Colab's **Secrets** panel (key icon in the left sidebar), add the required key:
+1. Open the desired notebook from the `notebooks/` folder in
+   [Google Colab](https://colab.research.google.com/).
+2. Add the API key to Colab Secrets, as described below.
+3. Run the dependency-install cell.
+4. In notebooks 03–05, select the provider in the configuration cell. The model names are shown
+   there: `gpt-5-mini` for OpenAI agents and `gemini-2.5-flash` for Gemini agents.
+5. Run the remaining cells from top to bottom.
+
+### Add an API key to Colab Secrets
+
+Colab Secrets stores the key outside the notebook file, so it is not exposed when you share or
+commit the notebook.
+
+1. Create an API key, if you do not already have one:
+
+   - [Create an OpenAI API key](https://platform.openai.com/api-keys)
+   - [Create a Gemini API key](https://aistudio.google.com/api-keys)
+
+2. In Colab, click the 🔑 **Secrets** icon in the left sidebar.
+3. Click **Add new secret**.
+4. Enter the exact secret name required by your selected provider:
 
    - `OPENAI_API_KEY` for notebook 01, or when `PROVIDER = "openai"`
    - `GEMINI_API_KEY` for notebook 02, or when `PROVIDER = "gemini"`
 
-4. In notebooks 03–05, select the provider in the configuration cell. The model names are shown
-   there: `gpt-5-mini` for OpenAI agents and `gemini-2.5-flash` for Gemini agents.
-5. Run the remaining cells from top to bottom.
+5. Paste the API key into the **Value** field and enable notebook access for that secret.
+6. Run the notebook's configuration cell. It reads the key securely with
+   `google.colab.userdata`.
+
+Never paste an API key into a code or text cell, and never commit a key to GitHub. If a key is
+accidentally exposed, revoke it from the provider dashboard and create a replacement. See
+[Google's Colab Secrets authentication guide](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Authentication.ipynb)
+for screenshots and the same setup flow.
 
 ### News workflow output
 
