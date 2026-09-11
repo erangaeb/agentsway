@@ -21,7 +21,7 @@ This lab is meant to be run on [Google Colab](https://colab.research.google.com/
 need to set up Python locally.
 
 1. Sign in with a Google account and open [colab.research.google.com](https://colab.research.google.com/).
-2. Upload and open [agentsway.ipynb](agentsway.ipynb).
+2. Upload and open [notebooks/agentsway.ipynb](notebooks/agentsway.ipynb).
 3. Install dependencies by running the first code cell:
 
    ```python
@@ -55,20 +55,20 @@ need to set up Python locally.
 4. **Run the agent**
 
    ```
-   python workflow.py
+   python src/workflow.py
    ```
 
 ## Project structure
 
 | File | Purpose |
 |---|---|
-| [agentsway.ipynb](agentsway.ipynb) | Ready-to-run Google Colab notebook |
-| [workflow.py](workflow.py) | Defines and runs the `BA2105 Agent` |
+| [notebooks/agentsway.ipynb](notebooks/agentsway.ipynb) | Ready-to-run Google Colab notebook |
+| [src/workflow.py](src/workflow.py) | Defines and runs the `BA2105 Agent` |
 | [requirements.txt](requirements.txt) | Python dependencies (`openai-agents`, `requests`, `google-genai`) |
 
 ## How it works
 
-[workflow.py](workflow.py) defines a single agent and runs it synchronously with a sample prompt:
+[src/workflow.py](src/workflow.py) defines a single agent and runs it synchronously with a sample prompt:
 
 ```python
 from agents import Agent, Runner
@@ -114,7 +114,7 @@ You are a helpful, accurate, and beginner-friendly AI assistant.
 """
 ```
 
-Try editing the `instructions` in [workflow.py](workflow.py) and re-running to see how the
+Try editing the `instructions` in [src/workflow.py](src/workflow.py) and re-running to see how the
 agent's responses change.
 
 ## Next steps
