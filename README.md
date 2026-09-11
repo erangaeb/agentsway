@@ -21,7 +21,7 @@ This lab is meant to be run on [Google Colab](https://colab.research.google.com/
 need to set up Python locally.
 
 1. Sign in with a Google account and open [colab.research.google.com](https://colab.research.google.com/).
-2. Upload and open [notebooks/agentsway.ipynb](notebooks/agentsway.ipynb).
+2. Upload and open [notebooks/01_openai_basic_agent.ipynb](notebooks/01_openai_basic_agent.ipynb).
 3. Install dependencies by running the first code cell:
 
    ```python
@@ -62,8 +62,8 @@ need to set up Python locally.
 
 | File | Purpose |
 |---|---|
-| [notebooks/agentsway.ipynb](notebooks/agentsway.ipynb) | Ready-to-run Google Colab notebook |
-| [src/workflow.py](src/workflow.py) | Defines and runs the `BA2105 Agent` |
+| [notebooks/01_openai_basic_agent.ipynb](notebooks/01_openai_basic_agent.ipynb) | Ready-to-run OpenAI agent notebook |
+| [src/workflow.py](src/workflow.py) | Defines and runs the `Learning Assistant` |
 | [requirements.txt](requirements.txt) | Python dependencies (`openai-agents`, `requests`, `google-genai`) |
 
 ## How it works
@@ -73,13 +73,13 @@ need to set up Python locally.
 ```python
 from agents import Agent, Runner
 
-ba2105_agent = Agent(
-    name="BA2105 Agent",
+agent = Agent(
+    name="Learning Assistant",
     instructions="You are a helpful AI assistant. Explain things about given topic clearly to a beginner."
 )
 
 result = Runner.run_sync(
-    starting_agent=ba2105_agent,
+    starting_agent=agent,
     input="Explain University of Colombo School of Computing Master of Business Analytics Program."
 )
 

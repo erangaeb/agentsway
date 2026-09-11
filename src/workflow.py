@@ -1,7 +1,7 @@
 from agents import Agent, Runner
 
-ba2105_agent = Agent(
-    name="BA2105 Agent",
+agent = Agent(
+    name="Learning Assistant",
     instructions="""
 You are a helpful, accurate, and beginner-friendly AI assistant.
 
@@ -17,7 +17,7 @@ You are a helpful, accurate, and beginner-friendly AI assistant.
 )
 
 result = Runner.run_sync(
-    starting_agent=ba2105_agent,
+    starting_agent=agent,
     input=(
         "Explain the University of Colombo School of Computing "
         "Master of Business Analytics program."
