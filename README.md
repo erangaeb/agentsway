@@ -21,24 +21,15 @@ This lab is meant to be run on [Google Colab](https://colab.research.google.com/
 need to set up Python locally.
 
 1. Sign in with a Google account and open [colab.research.google.com](https://colab.research.google.com/).
-2. Create a new notebook (**File → New notebook**).
-3. Install dependencies in the first cell:
-
-   ```
-   !pip install openai-agents requests google-genai
-   ```
-
-4. Set your API key as an environment variable, or use Colab's **Secrets** panel (the key icon in
-   the left sidebar) to store `OPENAI_API_KEY` securely and load it with `userdata.get`:
+2. Upload and open [agentsway.ipynb](agentsway.ipynb).
+3. Install dependencies by running the first code cell:
 
    ```python
-   import os
-   from google.colab import userdata
-
-   os.environ["OPENAI_API_KEY"] = userdata.get("OPENAI_API_KEY")
+   %pip install -q openai-agents requests google-genai
    ```
 
-5. Copy the contents of [workflow.py](workflow.py) into a new cell and run it.
+4. Add `OPENAI_API_KEY` to Colab's **Secrets** panel (the key icon in the left sidebar).
+5. Run the remaining cells in order.
 
 ## Setup (local)
 
@@ -71,6 +62,7 @@ need to set up Python locally.
 
 | File | Purpose |
 |---|---|
+| [agentsway.ipynb](agentsway.ipynb) | Ready-to-run Google Colab notebook |
 | [workflow.py](workflow.py) | Defines and runs the `BA2105 Agent` |
 | [requirements.txt](requirements.txt) | Python dependencies (`openai-agents`, `requests`, `google-genai`) |
 
