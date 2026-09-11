@@ -70,6 +70,7 @@ need to set up Python locally.
 | [notebooks/02_gemini_basic_agent.ipynb](notebooks/02_gemini_basic_agent.ipynb) | Gemini agent via OpenAI-compatible API |
 | [notebooks/03_direct_web_research.ipynb](notebooks/03_direct_web_research.ipynb) | Direct search followed by an agent summary |
 | [notebooks/04_agent_tool_call_web_research.ipynb](notebooks/04_agent_tool_call_web_research.ipynb) | Agent-driven search with an annotated tool |
+| [notebooks/05_news_brief_workflow.ipynb](notebooks/05_news_brief_workflow.ipynb) | Multi-agent news research, scripting, and text-to-speech |
 | [src/workflow.py](src/workflow.py) | Defines and runs the `Learning Assistant` |
 | [requirements.txt](requirements.txt) | Python dependencies (`openai-agents`, `requests`, `google-genai`) |
 
