@@ -111,12 +111,47 @@ The local script is the simplest OpenAI example.
    python src/workflow.py
    ```
 
+## Run the news workflow as an API or MCP tool
+
+The production-style news workflow is shared by a FastAPI application and an MCP server. It searches
+recent public news, then uses editor, fact-checker, and script-writer agents to return a source-grounded
+news brief. Set one provider key before starting either service:
+
+```bash
+export GEMINI_API_KEY="your-api-key"
+# Or: export OPENAI_API_KEY="your-api-key"
+```
+
+Start the REST API and open its interactive documentation at `http://127.0.0.1:8000/docs`:
+
+```bash
+uvicorn src.news_brief_api:app --reload
+```
+
+Send a request to `POST /news-briefs` with a JSON body such as:
+
+```json
+{"topic": "artificial intelligence business", "provider": "gemini"}
+```
+
+To expose the same workflow as an MCP tool for an MCP client, run:
+
+```bash
+python -m src.news_brief_mcp_server
+```
+
+The server exposes `create_news_brief(topic, provider)`. The MCP server uses stdio, making it suitable
+for a local client configuration and for demonstrating tool discovery and agent-to-tool calls.
+
 ## Project structure
 
 | Path | Purpose |
 |---|---|
 | `notebooks/` | Colab-ready learning workflows, ordered from basic to advanced. |
 | `src/workflow.py` | A minimal local Learning Assistant example. |
+| `src/news_brief_workflow.py` | Reusable multi-agent news workflow shared by the API and MCP server. |
+| `src/news_brief_api.py` | FastAPI endpoint for running the news workflow. |
+| `src/news_brief_mcp_server.py` | Local stdio MCP server exposing the workflow as a tool. |
 | `requirements.txt` | Dependencies: `openai-agents`, `requests`, `google-genai`, and `ddgs`. |
 | `coursework/` | Graded coursework for applying agentic AI workflow concepts. |
 | `papers/` | Previous research papers related to agentic AI workflows. |

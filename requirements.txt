@@ -2,3 +2,6 @@ openai-agents
 requests
 google-genai
 ddgs
+fastapi
+mcp>=2,<3
+uvicorn[standard]
