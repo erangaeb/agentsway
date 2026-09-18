@@ -127,6 +127,12 @@ The local script is the simplest OpenAI example.
 - **Multi-agent workflows:** focused agents pass work from one stage to the next.
 - **Provider selection:** the same workflow can use OpenAI or Gemini models through one configuration setting.
 
+## Coursework
+
+Apply the notebook concepts to a realistic workplace problem:
+
+- [Coursework 01: Agentic AI Workflow Case Study](coursework/01_agentic_ai_workflow_case_study.md) — analyse a manual process, design an agentic workflow, define agents and prompts, and optionally build a prototype.
+
 ## Next steps
 
 - Change the questions and news topic to explore different use cases.
