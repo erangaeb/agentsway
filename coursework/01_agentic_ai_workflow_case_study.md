@@ -2,7 +2,7 @@
 
 ## Objective
 
-Identify a real, low-risk workplace process that could be improved with an agentic AI workflow. Analyse the current process, design the workflow, define its agents and prompts, and build a small prototype if practical.
+Identify a real workplace process that could be improved with an agentic AI workflow. Analyse the current process, design the workflow, define its agents and prompts, and build a small prototype if practical.
 
 This case study will be the foundation for Coursework 02: a research paper about the proposed solution.
 
@@ -24,7 +24,7 @@ You remain responsible for the final work. Review AI output critically, verify i
 
 ## Choose a use case
 
-Choose one narrow, repetitive, low-risk process from a real setting you know: your workplace, office, internship, volunteer role, family business, or student organization. If you do not have access to such a setting, use a realistic office scenario that you can describe clearly. Do not use confidential or personal data in your report or prototype.
+Choose one narrow, repetitive process from a real setting you know: your workplace, office, internship, volunteer role, family business, or student organization. If you do not have access to such a setting, use a realistic office scenario that you can describe clearly. Do not use confidential or personal data in your report or prototype.
 
 ## Report requirements
 
