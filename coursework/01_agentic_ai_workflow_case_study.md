@@ -6,6 +6,14 @@ Identify a real, low-risk workplace process that could be improved with an agent
 
 This case study will be the foundation for Coursework 02: a research paper about the proposed solution.
 
+## Use AI throughout the task
+
+Use AI tools throughout this coursework to develop the concept, analyse the process, design the workflow, define agents and prompts, create diagrams, and improve the report. Chat-based tools such as Claude or ChatGPT can support research, analysis, drafting, and critique.
+
+For the optional prototype, use an AI coding tool such as Claude Code, Codex, or a similar coding assistant to plan, implement, test, and debug the solution.
+
+You remain responsible for the final work. Review AI output critically, verify important claims, remove confidential information, and correct errors. Add a short **AI-use disclosure** at the end of the report stating which tools you used and how they contributed.
+
 ## Learning outcomes
 
 - Identify a suitable workplace use case for agentic AI.
@@ -18,20 +26,9 @@ This case study will be the foundation for Coursework 02: a research paper about
 
 Choose one narrow, repetitive, low-risk process from a real setting you know: your workplace, office, internship, volunteer role, family business, or student organization. If you do not have access to such a setting, use a realistic office scenario that you can describe clearly. Do not use confidential or personal data in your report or prototype.
 
-Suitable examples:
-
-- Weekly competitor or industry-news research and summaries
-- Categorizing support tickets and drafting responses for human review
-- Extracting information from invoices, forms, or reports
-- Turning meeting notes into action items and follow-up drafts
-- Checking documents against an internal checklist or policy
-- Preparing internal knowledge briefs from trusted sources
-
-Avoid high-risk autonomous decisions involving hiring, employee performance, medical care, legal advice, lending, pricing, or customer approvals. These workflows must retain human oversight.
-
 ## Report requirements
 
-Submit a 4–6 page report in Markdown, PDF, or document format using these headings.
+Submit a report in Markdown, PDF, or document format using these headings.
 
 ### 1. Use-case overview
 
@@ -52,18 +49,19 @@ Mermaid, draw.io, and Excalidraw are all acceptable diagram tools.
 
 ### 4. Agent design
 
-Define each agent in a table.
+For each agent, describe:
 
-| Agent | Responsibility | Input | Output | Tools or data needed | Human review? |
-|---|---|---|---|---|---|
-| Research Agent | Finds credible sources | Topic | Source list | Web search | No |
-| Review Agent | Checks relevance and risk | Source list | Approved brief | Policy checklist | Yes |
+- Agent name and responsibility
+- Input it receives and output it produces
+- Tools or data sources it can use
+- Which agent, user, or system receives its output next
+- Whether a person should review or approve the output
 
 Use focused roles. A good workflow normally has 2–5 agents rather than one agent attempting every task.
 
 ### 5. Prompts and tools
 
-Provide the system prompt for at least two proposed agents. Each prompt must define its role, goal, inputs, decision rules, safety boundaries, and output format.
+Provide the system prompt for every proposed agent. Each prompt must define its role, goal, inputs, decision rules, safety boundaries, and output format.
 
 List the tools or data sources each agent needs, such as web search, a knowledge base, email, document retrieval, a calculator, or a database. Explain when each tool may be used.
 
@@ -83,23 +81,11 @@ Possible measures include time saved, accuracy, user satisfaction, or reduced re
 
 Submit:
 
-1. A 4–6 page case-study report.
+1. A case-study report.
 2. Current-state and proposed-workflow diagrams.
 3. An optional prototype notebook, script, or pseudocode file.
 
 Do not submit API keys, confidential documents, customer data, employee data, or internal information you are not authorized to share.
-
-## Assessment rubric
-
-| Criterion | Marks |
-|---|---:|
-| Clear and valuable use-case selection | 15 |
-| Accurate analysis of the current manual process | 15 |
-| Agentic workflow design and human-review points | 25 |
-| Agent roles, prompts, and tool design | 20 |
-| Risk, privacy, ethics, and evaluation plan | 15 |
-| Prototype, pseudocode, and report clarity | 10 |
-| **Total** | **100** |
 
 ## Before submitting
 
