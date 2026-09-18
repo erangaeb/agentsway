@@ -111,37 +111,55 @@ The local script is the simplest OpenAI example.
    python -m src.basic_workflow.workflow
    ```
 
-## Run the news workflow as an API or MCP tool
+## Run the news workflow as an API and MCP tool
 
-The production-style news workflow is shared by a FastAPI application and an MCP server. It searches
-recent public news, then uses editor, fact-checker, and script-writer agents to return a source-grounded
-news brief. Set one provider key before starting either service:
+The production-style news workflow has two independently configured services. The authenticated API owns
+the provider configuration and runs the workflow in the background. The authenticated MCP server exposes
+one simple tool, `create_news_brief(topic)`, and returns a job ID immediately instead of waiting for the
+agent workflow to finish.
+
+Both services log lifecycle events and errors to standard output. Set `LOG_LEVEL=DEBUG` for more detail;
+logs never include API keys, Bearer tokens, or full news content.
+
+In one terminal, configure and start the workflow API. It uses Gemini unless `NEWS_BRIEF_PROVIDER` is set
+to `openai`:
 
 ```bash
 export GEMINI_API_KEY="your-api-key"
-# Or: export OPENAI_API_KEY="your-api-key"
+export NEWS_BRIEF_PROVIDER="gemini"
+export NEWS_BRIEF_API_TOKEN="choose-a-long-random-secret"
+uvicorn src.news_brief_workflow.api:app --reload
 ```
 
 Start the REST API and open its interactive documentation at `http://127.0.0.1:8000/docs`:
 
-```bash
-uvicorn src.news_brief_workflow.api:app --reload
-```
-
-Send a request to `POST /news-briefs` with a JSON body such as:
+Send a request to `POST /news-briefs` with a JSON body such as. It returns `202 Accepted` with a job ID:
 
 ```json
-{"topic": "artificial intelligence business", "provider": "gemini"}
+{"topic": "artificial intelligence business"}
 ```
 
-To expose the same workflow as an MCP tool for an MCP client, run:
+Include `Authorization: Bearer <NEWS_BRIEF_API_TOKEN>` in direct API requests. In a second terminal,
+configure and start the Streamable HTTP MCP server:
 
 ```bash
+export NEWS_BRIEF_API_URL="http://127.0.0.1:8000/news-briefs"
+export MCP_AUTH_TOKEN="same-secret-used-by-the-api"
 python -m src.news_brief_workflow.mcp_server
 ```
 
-The server exposes `create_news_brief(topic, provider)`. The MCP server uses stdio, making it suitable
-for a local client configuration and for demonstrating tool discovery and agent-to-tool calls.
+Connect an MCP client to `http://127.0.0.1:8001/mcp` and configure it to send
+`Authorization: Bearer <MCP_AUTH_TOKEN>`. The MCP server forwards that authenticated token to the API,
+so `MCP_AUTH_TOKEN` and `NEWS_BRIEF_API_TOKEN` must have the same value. The MCP server never receives
+provider API keys and callers cannot choose a model or provider.
+
+Poll `GET /news-briefs/{job_id}` with the same API authorization header to see whether a job is `queued`,
+`running`, `completed`, or `failed`. Completed jobs include the generated brief. Jobs are stored in memory
+for this learning example, so they are lost if the API service restarts.
+
+Completed jobs also generate a provider-native voice briefing: OpenAI produces an MP3 with
+`gpt-4o-mini-tts`; Gemini produces a WAV file with native Gemini TTS. Download it from
+`GET /news-briefs/{job_id}/audio` using the same API authorization header.
 
 ## Project structure
 
@@ -149,7 +167,7 @@ for a local client configuration and for demonstrating tool discovery and agent-
 |---|---|
 | `notebooks/` | Colab-ready learning workflows, ordered from basic to advanced. |
 | `src/basic_workflow/` | A minimal local Learning Assistant example. |
-| `src/news_brief_workflow/` | Reusable news workflow with its FastAPI endpoint and local stdio MCP server. |
+| `src/news_brief_workflow/` | Reusable news workflow with authenticated FastAPI and Streamable HTTP MCP services. |
 | `requirements.txt` | Dependencies: `openai-agents`, `requests`, `google-genai`, and `ddgs`. |
 | `coursework/` | Graded coursework for applying agentic AI workflow concepts. |
 | `papers/` | Previous research papers related to agentic AI workflows. |
