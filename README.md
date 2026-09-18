@@ -108,7 +108,7 @@ The local script is the simplest OpenAI example.
 4. Run the workflow:
 
    ```bash
-   python src/workflow.py
+   python -m src.basic_workflow.workflow
    ```
 
 ## Run the news workflow as an API or MCP tool
@@ -148,7 +148,7 @@ for a local client configuration and for demonstrating tool discovery and agent-
 | Path | Purpose |
 |---|---|
 | `notebooks/` | Colab-ready learning workflows, ordered from basic to advanced. |
-| `src/workflow.py` | A minimal local Learning Assistant example. |
+| `src/basic_workflow/` | A minimal local Learning Assistant example. |
 | `src/news_brief_workflow/` | Reusable news workflow with its FastAPI endpoint and local stdio MCP server. |
 | `requirements.txt` | Dependencies: `openai-agents`, `requests`, `google-genai`, and `ddgs`. |
 | `coursework/` | Graded coursework for applying agentic AI workflow concepts. |
