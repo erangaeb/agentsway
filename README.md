@@ -14,7 +14,7 @@ audio generation with either OpenAI or Gemini.
 | [03_direct_web_research.ipynb](notebooks/03_direct_web_research.ipynb) | Direct function call | Calls DuckDuckGo search directly, shows the results, then asks an agent to summarize them. |
 | [04_agent_tool_call_web_research.ipynb](notebooks/04_agent_tool_call_web_research.ipynb) | Agent tool call | Gives the agent an annotated `search_web` tool and lets it decide when to call it. |
 | [05_news_brief_workflow.ipynb](notebooks/05_news_brief_workflow.ipynb) | Multi-agent workflow | Searches news, filters it with an editor agent, writes a news script, creates audio, and downloads it. |
-| [06_gemini_video_news_workflow.ipynb](notebooks/06_gemini_video_news_workflow.ipynb) | Gemini video workflow | Adds a Video Director agent that creates a Veo prompt, generates an MP4, and downloads it. |
+| [06_gemini_video_news_workflow.ipynb](notebooks/06_gemini_video_news_workflow.ipynb) | Gemini video workflow | Uses editor, fact-checking, script-writing, video-directing, and prompt-review agents before generating an MP4 with Veo. |
 
 ## Prerequisites
 
