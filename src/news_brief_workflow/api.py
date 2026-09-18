@@ -5,7 +5,7 @@ from typing import Literal
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
-from src.news_brief_workflow import generate_news_brief
+from src.news_brief_workflow.workflow import generate_news_brief
 
 app = FastAPI(
     title="Agentsway News Brief API",

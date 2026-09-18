@@ -4,7 +4,7 @@ from typing import Literal
 
 from mcp.server.mcpserver import MCPServer
 
-from src.news_brief_workflow import generate_news_brief
+from src.news_brief_workflow.workflow import generate_news_brief
 
 mcp = MCPServer("Agentsway News Brief")
 
