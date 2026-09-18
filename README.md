@@ -118,6 +118,8 @@ The local script is the simplest OpenAI example.
 | `notebooks/` | Colab-ready learning workflows, ordered from basic to advanced. |
 | `src/workflow.py` | A minimal local Learning Assistant example. |
 | `requirements.txt` | Dependencies: `openai-agents`, `requests`, `google-genai`, and `ddgs`. |
+| `coursework/` | Graded coursework for applying agentic AI workflow concepts. |
+| `papers/` | Previous research papers related to agentic AI workflows. |
 
 ## Key ideas
 
@@ -132,6 +134,11 @@ The local script is the simplest OpenAI example.
 Apply the notebook concepts to a realistic workplace problem:
 
 - [Coursework 01: Agentic AI Workflow Case Study](coursework/01_agentic_ai_workflow_case_study.md) — analyse a manual process, design an agentic workflow, define agents and prompts, and optionally build a prototype.
+- [Coursework 02: AI-Assisted Research Paper on an Agentic AI Workflow](coursework/02_ai_assisted_research_paper.md) — develop the proposed workflow into a research paper and submit it as a PDF; LaTeX with Overleaf is recommended.
+
+## Papers
+
+The [papers/](papers/) directory contains previous research papers related to agentic AI workflows. Students may use the included papers as optional references and inspiration for Coursework 02.
 
 ## Next steps
 
