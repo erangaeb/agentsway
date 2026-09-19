@@ -118,8 +118,8 @@ the provider configuration and runs the workflow in the background. The authenti
 one simple tool, `create_news_brief(topic)`, and returns a job ID immediately instead of waiting for the
 agent workflow to finish.
 
-Both services log lifecycle events and errors to standard output. Set `LOG_LEVEL=DEBUG` for more detail;
-logs never include API keys, Bearer tokens, or full news content.
+Both services log lifecycle events and errors to the console's standard output, not to log files. Set
+`LOG_LEVEL=DEBUG` for more detail; logs never include API keys, Bearer tokens, or full news content.
 
 In one terminal, configure and start the workflow API. It uses Gemini unless `NEWS_BRIEF_PROVIDER` is set
 to `openai`:
