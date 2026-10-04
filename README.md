@@ -15,6 +15,7 @@ audio generation with either OpenAI or Gemini.
 | [04_agent_tool_call_web_research.ipynb](notebooks/04_agent_tool_call_web_research.ipynb) | Agent tool call | Gives the agent an annotated `search_web` tool and lets it decide when to call it. |
 | [05_news_brief_workflow.ipynb](notebooks/05_news_brief_workflow.ipynb) | Multi-agent workflow | Searches news, filters it with an editor agent, writes a news script, creates audio, and downloads it. |
 | [06_gemini_video_news_workflow.ipynb](notebooks/06_gemini_video_news_workflow.ipynb) | Gemini video workflow | Uses editor, fact-checking, script-writing, video-directing, and prompt-review agents before generating an MP4 with Veo. |
+| [07_customer_support_workflow.ipynb](notebooks/07_customer_support_workflow.ipynb) | Conditional workflow with human approval | Investigates a damaged order, checks policy, reviews a structured proposal, and waits for approval before recording a simulated replacement, refund, or escalation. |
 
 ## Prerequisites
 
@@ -32,7 +33,7 @@ commit them to the repository.
    [Google Colab](https://colab.research.google.com/).
 2. Add the API key to Colab Secrets, as described below.
 3. Run the dependency-install cell.
-4. In notebooks 03–05, select the provider in the configuration cell. The model names are shown
+4. In notebooks 03–05 and 07, select the provider in the configuration cell. The model names are shown
    there: `gpt-5-mini` for OpenAI agents and `gemini-2.5-flash` for Gemini agents.
 5. Run the remaining cells from top to bottom.
 
@@ -81,6 +82,22 @@ that the voice is AI-generated.
 Notebook 06 is an optional advanced Gemini-only workflow. It adds a Video Director agent after
 the news script, then uses Veo to generate and download `news_brief.mp4`. Video generation is a
 long-running operation and requires Veo access for the `GEMINI_API_KEY` used in the notebook.
+
+### Customer support workflow
+
+Notebook 07 builds on the earlier pipelines with four agents, read-only order tools, structured
+outputs, shared case state, conditional routing, and a review loop limited to one revision.
+Python enforces the fictional policy; an approval widget controls the final simulated action.
+
+Run the cells in order and inspect the evidence before choosing **Approve simulation** or **Reject**.
+The local action ledger prevents duplicate resolutions, and execution rechecks stock and policy.
+All orders are fictional; the notebook does not send messages, move money, or create real shipments.
+
+The lecture includes three cases: an in-stock replacement (`ORD-1042`), an out-of-stock refund
+(`ORD-1043`), and a specialist escalation (`ORD-1044`). Set `RUN_COMPARISON = True` to prepare all
+three with additional model calls; each stops before approval. It also includes missing-information
+handling, a visible case trace, student exercises, and policy checks that run without model calls.
+The notebook works in Colab or local Jupyter with Python 3.10+; its install cell includes widgets.
 
 ## Run the basic example locally
 
