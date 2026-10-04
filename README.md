@@ -74,9 +74,9 @@ and sign in with the Google account that has access to your API project.
 3. Check requests per minute (RPM), input tokens per minute (TPM), and requests per day (RPD),
    where applicable. Use the time-range control to inspect recent usage.
 
-For notebook 08, check all three writer models, the reasoning model, and the speech model.
-The editor and a writer can share a model, and the reasoning agent reuses the third writer's model,
-so their calls contribute to the same model's usage within the project.
+For notebook 08, check the configured writer, reasoning, and speech models. By default, the three
+writers and reasoning agent use the same text model as the editor. Their calls contribute to that
+model's usage within the project; repeating the same model does not reduce the number of calls.
 Limits vary by model and project tier and apply per project, not per API key. See
 [Google's rate-limit documentation](https://ai.google.dev/gemini-api/docs/rate-limits) for details.
 
@@ -121,8 +121,10 @@ The notebook works in Colab or local Jupyter with Python 3.10+; its install cell
 Notebook 08 keeps notebook 05's search, editor, provider setup, speech generation, and download.
 Only the script-writing stage changes: three writers receive the original prompt and the same edited
 news, then a reasoning agent compares their drafts and returns `news_script` plus an explanation.
-Gemini uses three configurable model IDs; the OpenAI option defaults to three samples of its configured
-model. Inspect the agreements, disagreements, and explanation before running the audio cell.
+`WRITER_1_MODEL_NAME`, `WRITER_2_MODEL_NAME`, `WRITER_3_MODEL_NAME`, and `REASONING_MODEL_NAME`
+default to the same configured model for either provider. Keep them identical to use one accessible
+model, or change individual variables to compare different models. Inspect the agreements,
+disagreements, and explanation before running the audio cell.
 
 ## Run the basic example locally
 
