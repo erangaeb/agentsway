@@ -64,6 +64,22 @@ accidentally exposed, revoke it from the provider dashboard and create a replace
 [Google's Colab Secrets authentication guide](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Authentication.ipynb)
 for screenshots and the same setup flow.
 
+### Check Gemini rate limits by model
+
+Before running a notebook, open the [Google AI Studio rate-limit dashboard](https://aistudio.google.com/rate-limit?timeRange=last-1-day)
+and sign in with the Google account that has access to your API project.
+
+1. Select the project associated with your `GEMINI_API_KEY`.
+2. Find each model used by the notebook and compare its usage with its active limits.
+3. Check requests per minute (RPM), input tokens per minute (TPM), and requests per day (RPD),
+   where applicable. Use the time-range control to inspect recent usage.
+
+For notebook 08, check all three writer models, the reasoning model, and the speech model.
+The editor and a writer can share a model, and the reasoning agent reuses the third writer's model,
+so their calls contribute to the same model's usage within the project.
+Limits vary by model and project tier and apply per project, not per API key. See
+[Google's rate-limit documentation](https://ai.google.dev/gemini-api/docs/rate-limits) for details.
+
 ### News workflow output
 
 Notebook 05 starts with a runnable Mermaid diagram explaining the flow:
