@@ -16,6 +16,7 @@ audio generation with either OpenAI or Gemini.
 | [05_news_brief_workflow.ipynb](notebooks/05_news_brief_workflow.ipynb) | Multi-agent workflow | Searches news, filters it with an editor agent, writes a news script, creates audio, and downloads it. |
 | [06_gemini_video_news_workflow.ipynb](notebooks/06_gemini_video_news_workflow.ipynb) | Gemini video workflow | Uses editor, fact-checking, script-writing, video-directing, and prompt-review agents before generating an MP4 with Veo. |
 | [07_customer_support_workflow.ipynb](notebooks/07_customer_support_workflow.ipynb) | Conditional workflow with human approval | Investigates a damaged order, checks policy, reviews a structured proposal, and waits for approval before recording a simulated replacement, refund, or escalation. |
+| [08_explainable_news_brief_workflow.ipynb](notebooks/08_explainable_news_brief_workflow.ipynb) | Consensus script writing | Extends notebook 05 with three script writers and a reasoning agent that produces the final script and an editorial explanation. |
 
 ## Prerequisites
 
@@ -98,6 +99,14 @@ The lecture includes three cases: an in-stock replacement (`ORD-1042`), an out-o
 three with additional model calls; each stops before approval. It also includes missing-information
 handling, a visible case trace, student exercises, and policy checks that run without model calls.
 The notebook works in Colab or local Jupyter with Python 3.10+; its install cell includes widgets.
+
+### Consensus news brief workflow
+
+Notebook 08 keeps notebook 05's search, editor, provider setup, speech generation, and download.
+Only the script-writing stage changes: three writers receive the original prompt and the same edited
+news, then a reasoning agent compares their drafts and returns `news_script` plus an explanation.
+Gemini uses three configurable model IDs; the OpenAI option defaults to three samples of its configured
+model. Inspect the agreements, disagreements, and explanation before running the audio cell.
 
 ## Run the basic example locally
 
